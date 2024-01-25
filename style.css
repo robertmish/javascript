@@ -6,35 +6,34 @@ body {
     padding:0;
 }
 
-#submit {
-    width: 342px;
-    padding: 15px;
+.box {
+
+    width: 30px;
+    height: 30px;
     background: blue;
-    color: #fff;
-    font-size: 20px;
-    border-radius: 10px;
-    border: blue;
-    box-shadow: 0px 4px 0px 0px #000;
-    margin-left: 40px;
-    margin-bottom: 30px;
-}
-
-li {
-    list-style-type: none;
-    background: yellow;
-    font-size:20px;
     margin-bottom: 20px;
-    padding:20px;
-    width: 300px;
-    box-shadow: 0px 3px 3px #e2c15e;
-    border-top-left-radius: 9px;
 }
 
-#textinput {
-
-    width: 335px;
-    height: 200px;
-    margin:50px;
-    font-size: 20px;
-    resize:none;
+.some-text {
+width: 500px;
+height: 200px;
+background: blue;
+transition: 1s ease-in;
 }
+
+.newclass {
+background: red;
+width: 500px;
+height: 150px;
+transition: 1s ease-in;
+}
+
+.right {
+display: block;
+margin-left: auto;
+}
+
+.left {
+    display: block;
+    margin-right: auto;
+    }

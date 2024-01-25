@@ -1,8 +1,8 @@
 // //  THE OLD WAY
 //  // 1:
 
-const firstway = document.getElementById('idname');
-const firstwayplural = document.getElementsById('idname');
+const firstway = document.getElementById("idname");
+const firstwayplural = document.getElementsById("idname");
 
 // // 2:
 const secondwayfirst = document.getElementByTagName("tagname");
@@ -14,7 +14,7 @@ const secondway = document.getElementsByTagName("tagname");
 
 // // 4: Plural
 
-const fourth = document.getElementsByClassName("");
+const fourth = document.getElementsByClassName(".nameofclass");
 
 // //  THE NEW WAY
 
@@ -119,8 +119,6 @@ for (item of nodeitems) {
   console.log(item.innerHTML);
 }
 
-
-
 // Big difference is that with nodelist you can use forEach to loop over them and for HTML collection you cannot
 
 // remember the forEach is the array method to loop through items
@@ -140,7 +138,9 @@ const newhtmlCollection = document.getElementsByClassName("item");
 const todoList = document.getElementById("list");
 
 const newItem = document.createElement("li");
+
 const newp = document.createElement("p");
+
 newp.innerHTML = "New paragraph added";
 
 newItem.classList.add("item");
