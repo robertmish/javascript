@@ -10,11 +10,17 @@ const todoButton = document.querySelector(".todo-button");
 //todo-list
 const todoList = document.querySelector(".todo-list");
 
-// console.log(todoInput, todoButton, todoList);
+// filter option
+
+// const filterOption = document.querySelector(".filter-todo");
 
 // Event listeners
 
 todoButton.addEventListener("click", addTodo);
+
+todoList.addEventListener("click", deleteCheck);
+
+// filterOption.addEventListener("change", filterTodo);
 
 // Functions
 
@@ -22,36 +28,100 @@ function addTodo(e) {
   // prevent form from submiting
   e.preventDefault();
 
-  // Create a todo DIV
-  const todoDiv = document.createElement("div");
+  const isEmpty = (str) => !str.trim().length;
 
-  todoDiv.classList.add("todo");
+  if (isEmpty(todoInput.value)) {
+    alert("Must enter a task");
+  } else {
+    // Create a todo DIV
+    const todoDiv = document.createElement("div");
 
-  // Create li tag
-  const newTodo = document.createElement("li");
+    todoDiv.classList.add("todo");
 
-  // add a class name to the newTodo li element
+    // Create li tag
+    const newTodo = document.createElement("li");
+    newTodo.innerText = todoInput.value;
+    // add a class name to the newTodo li element
 
-  newTodo.classList.add("todo-item");
-  console.log(newTodo);
+    newTodo.classList.add("todo-item");
+    console.log(newTodo);
 
-  // append the child inside the parent div "todoDiv";
+    // append the child inside the parent div "todoDiv";
 
-  todoDiv.appendChild(newTodo);
+    todoDiv.appendChild(newTodo);
 
-  // create a completed button
+    // Create a marked button
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add("complete-btn");
+    todoDiv.appendChild(completedButton);
 
-  const trashButton = document.createElement("button");
+    // create a completed button
 
-  trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+    const trashButton = document.createElement("button");
 
-  //   // add a class list to the completed button
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
 
-  trashButton.classList.add("complete-btn");
+    //   // add a class list to the completed button
 
-  //   // add a child element into the todo div
+    trashButton.classList.add("trash-btn");
 
-  todoDiv.appendChild(trashButton);
+    //   // add a child element into the todo div
 
-  todoList.appendChild(todoDiv);
+    todoDiv.appendChild(trashButton);
+
+    todoList.appendChild(todoDiv);
+
+    // Clear the todo input
+    todoInput.value = "";
+  }
 }
+
+// The function that delets the todo
+
+function deleteCheck(e) {
+  e.preventDefault();
+
+  const item = e.target;
+
+  console.log(item);
+
+  if (item.classList[0] === "trash-btn") {
+    const todo = item.parentElement;
+    todo.remove();
+  }
+
+  // checkmark
+
+  if (item.classList[0] === "complete-btn") {
+    item.classList.toggle("completed");
+  }
+}
+
+//  filter function
+
+// function filterTodo(e) {
+//   const todos = todoList.childNodes;
+//   console.log(todos);
+
+//   todos.forEach(function (todo) {
+//     switch (e.target.value) {
+//       case "all":
+//         todo.style.display = "flex";
+//         break;
+//       case "completed":
+//         if (todo.classList.contains("completed")) {
+//           todo.style.display = "flex";
+//         } else {
+//           todo.style.display = "none";
+//         }
+//         break;
+//       case "uncompleted":
+//         if (!todo.classList.contains("uncompleted")) {
+//           todo.style.display = "flex";
+//         } else {
+//           todo.style.display = "none";
+//         }
+//     }
+//   });
+// }
